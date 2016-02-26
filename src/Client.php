@@ -40,8 +40,6 @@
       {
           $GLOBALS['DB']->exec("INSERT INTO client (name, stylist_id) VALUES('{$this->getName()}', {$this->getStylistId()})");
           $this->id = $GLOBALS['DB']->lastInsertId();
-
-          var_dump($this->getStylistId());
       }
 
       static function getAll()
@@ -55,11 +53,31 @@
               $stylist_id = $client['stylist_id'];
               $id = $client['id'];
               $new_client = new Client($name, $stylist_id, $id);
-              var_dump($new_client);
               array_push($clients, $new_client);
           }
 
           return $clients;
+      }
+
+      static function find($search_id)
+      {
+          $found_client = null;
+          $clients = Client::getAll();
+          foreach($clients as $client)
+          {
+              $client_id = $client->getId();
+              if ($client_id == $search_id)
+              {
+                  $found_client = $client;
+              }
+          }
+
+          return $found_client;
+      }
+
+      function deleteClient()
+      {
+          $GLOBALS['DB']->exec("DELETE FROM client WHERE id = {$this->getId()};");
       }
 
       static function deleteAll()

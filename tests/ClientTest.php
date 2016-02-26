@@ -68,8 +68,7 @@ class  ClientTest  extends PHPUnit_Framework_TestCase{
 
             //Act
             $result = Client::getAll();
-            var_dump($new_client);
-            var_dump($result);
+
             //Assert
             $this->assertEquals($new_client, $result[0]);
 
@@ -109,7 +108,7 @@ class  ClientTest  extends PHPUnit_Framework_TestCase{
             $new_stylist->save();
 
             $name = "Barb";
-            $stylist_id = 1;
+            $stylist_id = $new_stylist->getId();
             $id = 2;
             $new_client = new Client($name, $stylist_id, $id);
             $new_client->save();
@@ -119,6 +118,71 @@ class  ClientTest  extends PHPUnit_Framework_TestCase{
 
             //Assert
             $this->assertEquals(true, is_numeric($result));
+        }
+
+        function test_find()
+        {
+            //Arrange
+            $name = "Barry";
+            $id = null;
+            $new_stylist = new Stylist($name, $id);
+            $new_stylist->save();
+
+            $name = "Choni";
+            $stylist_id = $new_stylist->getId();
+            $new_client = new Client($name, $stylist_id, $id);
+            $new_client->save();
+
+            //Act
+            $result = Client::find($new_client->getId());
+
+            //Assert
+            $this->assertEquals($new_client, $result);
+        }
+
+        function test_deleteClient()
+        {
+            //Arrange
+            $name = "Hannah";
+            $stylist_id = 1;
+            $id = null;
+            $new_Client = new Client($name, $stylist_id, $id);
+            $new_Client->save();
+
+            $name2 = "James";
+            $stylist_id = 2;
+            $new_Client2 = new Client($name2, $stylist_id, $id);
+            $new_Client2->save();
+
+
+            //Act
+            $new_Client->deleteClient();
+
+            //Assert
+            $this->assertEquals([$new_Client2], Client::getAll());
+        }
+
+        function test_deleteAll()
+        {
+            //Arrange
+            $name = "Hannah";
+            $stylist_id = 1;
+            $id = null;
+            $new_Client = new Client($name, $stylist_id, $id);
+            $new_Client->save();
+
+            $name2 = "James";
+            $stylist_id = 2;
+            $new_Client2 = new Client($name2, $stylist_id, $id);
+            $new_Client2->save();
+
+            //Act
+            Client::deleteAll();
+            $result = Client::getAll();
+
+            //Assert
+            $this->assertEquals([], $result);
+
         }
     }
 ?>
