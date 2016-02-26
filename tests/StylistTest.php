@@ -102,6 +102,25 @@ class  StylistTest  extends PHPUnit_Framework_TestCase{
 
         }
 
+        function test_update()
+        {
+            //Arrange
+            $name = "Hannah";
+            $id = null;
+            $new_stylist = new Stylist($name, $id);
+            $new_stylist->save();
+
+            $new_name = "Hans";
+
+            //Act
+            $result = $new_stylist->update($new_name);
+            
+
+            //Assert
+            $this->assertEquals($new_name, $new_stylist->getName());
+
+        }
+
 
 
 }
