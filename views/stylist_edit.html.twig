@@ -13,21 +13,24 @@
         <h1><i><a href="/">HANDSOME DEVIL</a></i></h1>
             <div class="row">
                 <h3>Edit {{ stylist.getName}}</h3>
-                <form action='/stylist/{{ stylist.getID }}' method='post'>
+                <form action='/stylist/{{ stylist.getID }}' method='post' class="col s6">
                     <input name="_method" type="hidden" value="patch">
                     <label for='new_name'>New Stylist name</label>
                     <input id='new_name' name='new_name' type='text'>
-                <div class="input-field col s12">
+            <div>
+            <div class="row">
                   <button type="submit" class="waves-effect waves-light btn indigo"> <i>UPDATE<i></button>
-                 </div>
+            </div>
                </form>
+            <div class="row">
                  <form action="/stylist/{{ stylist.getId }}" method="post">
                      <input name="_method" type="hidden" value="delete">
                      <button type="submit" class="waves-effect waves-light btn indigo  lighten-2"><i>DELETE THIS STYLIST</i></button>
                  </form>
             </div>
-            </form>
            </div>
-
+       </div>
+       <a href="/">HOME</a>
+   </div>
     </body>
 </html>
