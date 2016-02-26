@@ -85,7 +85,7 @@
                 return $found_stylist;
             }
 
-            function deleteStylist()
+            function delete()
             {
                 $GLOBALS['DB']->exec("DELETE FROM stylist WHERE id = {$this->getId()};");
             }

@@ -29,8 +29,10 @@
                     <h2>Stylists</h2>
                     {% for stylist in stylists %}
                     <ul>
-                        <li><a href="/stylists/{{stylist.getId}}">{{ stylist.getName }}</a></li>
+                        <li><h4>{{ stylist.getName }}</h4></li>
                     </ul>
+                    <a href="/stylists/{{stylist.getId}}">ADD CLIENTS</a>
+                    <a href="/stylist/{{stylist.getID}}/edit"><i>/     EDIT<i></a>
                     {% endfor %}
                 {% else %}
                 <p>There are no stylists yet!</p>
