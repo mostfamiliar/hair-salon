@@ -74,6 +74,7 @@ class  ClientTest  extends PHPUnit_Framework_TestCase{
 
         }
 
+
         function test_getAll()
         {
             //Arrange
