@@ -33,7 +33,6 @@
             static function getAll()
             {
                 $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylist;");
-                var_dump($returned_stylists);
                 $stylists = array();
 
                 foreach($returned_stylists as $stylist)
@@ -47,9 +46,14 @@
                 return $stylists;
             }
 
+            // static function update()
+            // {
+            //
+            // }
+
             static function deleteAll()
             {
-                $GLOBALS['DB']->exec("DELETE FROM stylist");
+                $GLOBALS['DB']->exec("DELETE FROM stylist;");
             }
 
 
