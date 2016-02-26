@@ -35,8 +35,6 @@
                 $clients = array();
                 $returned_clients = $GLOBALS['DB']->query("SELECT * FROM client WHERE    stylist_id = {$this->getId()}");
 
-                var_dump($returned_clients);
-
                 foreach($returned_clients as $client) {
                       $name = $client['name'];
                       $stylist_id = $client['stylist_id'];

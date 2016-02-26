@@ -33,7 +33,7 @@
     {
         $name = $_POST['client_name'];
         $stylist_id = $_POST['stylist_id'];
-        $new_client = new Client($name, $stylist_id $id = null);
+        $new_client = new Client($name, $stylist_id, $id = null);
         $new_client->save();
         $stylist = Stylist::find($stylist_id);
         return $app['twig']->render('stylists.html.twig', array('stylist'=> $stylist, 'clients' => $stylist->getClients()));
@@ -51,6 +51,12 @@
         $stylist = Stylist::find($id);
         $client = Stylist::find($id);
         return $app['twig']->render('stylists.html.twig', array('stylist'=> $stylist, 'clients' => $client));
+    });
+
+    $app->post("/delete_clients", function() use ($app)
+    {
+        Client::deleteAll();
+        return $app['twig']->render('stylists.html.twig', array('clients' => Client::getAll()));
     });
 
     return $app;

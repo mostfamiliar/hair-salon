@@ -24,9 +24,19 @@
             </div>
             </form>
 
-            <form action="/delete_stylists" method="post" class="col s12">
-            <button type="submit" class="waves-effect waves-light btn red"> <i>DELETE<i></button>
-            </form>
+        <div class="row">
+            {% if clients is not empty %}
+        <p>Here are the clients:</p>
+            <ul>
+                {% for client in clients %}
+                <li><h4>{{ client.getName }}</h4></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <form action="/delete_clients" method="post" class="col s12">
+        <button type="submit" class="waves-effect waves-light btn red"> <i>DELETE CLIENTS<i></button>
+        </form>
            </div>
         </div>
     </body>
