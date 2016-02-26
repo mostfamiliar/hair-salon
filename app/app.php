@@ -16,10 +16,18 @@
     Request::enableHttpMethodParameterOverride();
 
     $app->get("/", function() use ($app)
-    {   var_dump(Stylist::getAll());
+    {
         return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
     });
 
+    $app->post("/stylist", function() use ($app)
+    {
+        $stylist = new Stylist($_POST['stylist']);
+        $stylist->save();
+        var_dump(Stylist::getAll());
+        return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+
+    });
 
 
     return $app;
