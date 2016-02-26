@@ -10,7 +10,7 @@
     </head>
     <body>
         <div class="container">
-        <h1><i>HANDSOME DEVIL<i class="material-icons">store</i></i></h1>
+        <h1><i><a href="/">HANDSOME DEVIL</a></i></h1>
             <div class="row">
                 <h3>{{ stylist.getName}}</h3>
                 <h4>Add a client</h4>
@@ -31,9 +31,7 @@
                 {% for client in clients %}
                 <li><h4>{{ client.getName }}</h4>
                 </li>
-                <form action="clients/{{client.getID}}/edit" method="get" class="col s12">
-                <button type="submit" class="waves-effect waves-light btn indigo lighten-3"> <i>EDIT<i></button>
-                </form>
+                <a href="/clients/{{client.getID}}/edit"><i>EDIT<i></a>
                 {% endfor %}
             </ul>
             {% endif %}

@@ -6,20 +6,25 @@
         <link rel="stylesheet" href="/css/styles.css">
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-        <title>Hair Salon</title>
+        <title>HANDSOME DEVIL</title>
     </head>
     <body>
         <div class="container">
-        <h1><i>HANDSOME DEVIL<i class="material-icons">store</i></i></h1>
+        <h1><i><a href="/">HANDSOME DEVIL</a></i></h1>
             <div class="row">
                 <h3>Edit {{ client.getName}}</h3>
-                <form action='/clients/{{client.getID}}/name' method='post'>
+                <form action='/clients/{{ client.getID }}' method='post'>
                     <input name="_method" type="hidden" value="patch">
                     <label for='new_name'>New client name</label>
                     <input id='new_name' name='new_name' type='text'>
                 <div class="input-field col s12">
                   <button type="submit" class="waves-effect waves-light btn indigo"> <i>UPDATE<i></button>
                  </div>
+               </form>
+                 <form action="/clients/{{ client.getId }}" method="delete">
+                     <input name="_method" type="hidden" value="delete">
+                     <button type="submit" class="waves-effect waves-light btn indigo  lighten-2"><i>DELETE THIS CATEGORY</i></button>
+                 </form>
             </div>
             </form>
            </div>
