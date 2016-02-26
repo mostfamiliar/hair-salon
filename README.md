@@ -22,9 +22,13 @@ _{Leave nothing to chance! You want it to be easy for potential users, employers
 
 _{Are there issues that have not yet been resolved that you want to let users know you know?  Outline any issues that would impact use of your application.  Share any workarounds that are in place. }_
 
-## Support and contact details
+## Mysql statements
 
-_{Let people know what to do if they run into any issues or have questions, ideas or concerns.  Encourage them to contact you or make a contribution to the code.}_
+_
+* _SHOW DATABASES;_
+* _CREATE DATABASE;_
+* _CREATE TABLE;_
+* _PHP_
 
 ## Technologies Used
 

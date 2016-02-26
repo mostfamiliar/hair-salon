@@ -53,6 +53,11 @@
                 $this->setName($new_name);
             }
 
+            function deleteStylist()
+            {
+                $GLOBALS['DB']->exec("DELETE FROM stylist WHERE id = {$this->getId()};");
+            }
+            
             static function deleteAll()
             {
                 $GLOBALS['DB']->exec("DELETE FROM stylist;");
