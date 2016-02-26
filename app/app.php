@@ -20,15 +20,24 @@
         return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
     });
 
-    $app->post("/stylist", function() use ($app)
+    $app->post("/stylists", function() use ($app)
     {
         $stylist = new Stylist($_POST['stylist']);
         $stylist->save();
-        var_dump(Stylist::getAll());
         return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
 
     });
 
+    $app->post("/delete_stylists", function() use ($app)
+    {
+        Stylist::deleteAll();
+        return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+    });
+
+    $app->get("/stylists/{id}", function ($id) use ($app)
+    {
+        Stylist::find($id);
+    });
 
     return $app;
  ?>
