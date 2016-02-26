@@ -26,23 +26,31 @@
         </form>
             <div class="row">
                 {% if stylists is not empty %}
-                    <h2>Stylists</h2>
+                    <h3>Stylists</h3>
                     {% for stylist in stylists %}
-                    <ul>
-                        <li><h4>{{ stylist.getName }}</h4></li>
-                    </ul>
+                    <div class="col s12 m6">
+                      <div class="card cyan lighten-5">
+                        <div class="card-content black-text">
+                        <span class="card-title">{{ stylist.getName }}</span>
+
+                    <div class="card-action">
                     <a href="/stylists/{{stylist.getId}}">ADD CLIENTS</a>
-                    <a href="/stylist/{{stylist.getID}}/edit"><i>/     EDIT<i></a>
+                    <a href="/stylist/{{stylist.getID}}/edit"><i>EDIT<i></a>
+                    </div>
+                   </div>
+                 </div>
+                </div>
                     {% endfor %}
                 {% else %}
                 <p>There are no stylists yet!</p>
                 {% endif %}
-            </div>
+
 
             <form action="/delete_stylists" method="post" class="col s12">
             <button type="submit" class="waves-effect waves-light btn red"> <i>DELETE ALL STYLISTS<i></button>
             </form>
+            </div>
            </div>
-        </div>
+
     </body>
 </html>

@@ -25,16 +25,22 @@
             </form>
 
         <div class="row">
-            {% if clients is not empty %}
-        <p>Here are the clients:</p>
+
+        <h3>Clients</h3>
             <ul>
                 {% for client in clients %}
-                <li><h4>{{ client.getName }}</h4>
-                </li>
-                <a href="/clients/{{client.getID}}/edit"><i>EDIT<i></a>
+                <div class="col s12 m3">
+                  <div class="card indigo lighten-5">
+                    <div class="card-content black-text">
+                        <span class="card-title">{{ client.getName }}</span>
+                        <div class="card-action">
+                        <a href="/clients/{{client.getID}}/edit"><i>EDIT<i></a>
+                        </div>
+                    </div>
+                  </div>
+              </div>
                 {% endfor %}
-            </ul>
-            {% endif %}
+
         </div>
         <form action="/delete_all_clients" method="post" class="col s12">
         <button type="submit" class="waves-effect waves-light btn red"> <i>DELETE ALL CLIENTS<i></button>
