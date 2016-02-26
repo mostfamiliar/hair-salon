@@ -4,13 +4,21 @@
 
     $app = new Silex\Application();
 
-    $server = 'mysql:host=localhost;dbname=hair_salon.db';
+    $server = 'mysql:host=localhost;dbname=hair_salon';
     $username = 'root';
     $password = 'root';
-    $DB = new PDO($server, $username, $password)
+    $DB = new PDO($server, $username, $password);
 
     $app->register(new Silex\Provider\TwigServiceProvider(), array('twig.path'=>__DIR__."/../views"
     ));
+
+    use Symfony\Component\HttpFoundation\Request;
+    Request::enableHttpMethodParameterOverride();
+
+    $app->get("/", function() use ($app)
+    {   var_dump(Stylist::getAll());
+        return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+    });
 
 
 
