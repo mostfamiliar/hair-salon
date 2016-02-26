@@ -13,6 +13,8 @@
     $app->register(new Silex\Provider\TwigServiceProvider(), array('twig.path'=>__DIR__."/../views"
     ));
 
+    $app['debug'] = true;
+
     use Symfony\Component\HttpFoundation\Request;
     Request::enableHttpMethodParameterOverride();
 
@@ -53,10 +55,26 @@
         return $app['twig']->render('stylists.html.twig', array('stylist'=> $stylist, 'clients' => $client));
     });
 
-    $app->post("/delete_clients", function() use ($app)
+    $app->post("/delete_all_clients", function() use ($app)
     {
         Client::deleteAll();
         return $app['twig']->render('stylists.html.twig', array('clients' => Client::getAll()));
+    });
+
+    $app->get("/clients/{id}/edit", function ($id) use ($app)
+    {
+        $client = Client::find($id);
+        return $app['twig']->render('client_edit.html.twig', array('client' => $client));
+    });
+
+    $app->patch("/clients/{id}/name", function ($id) use ($app)
+    {
+        $new_name = $_POST['new_name'];
+        $client = Client::find($id);
+        $client->updateName($new_name);
+        $stylist_id = $client->getStylistId();
+        $stylist = Stylist::find($stylist_id);
+        return $app['twig']->render('stylists.html.twig', array('stylist'=> $stylist, 'clients' => $stylist->getClients()));
     });
 
     return $app;
