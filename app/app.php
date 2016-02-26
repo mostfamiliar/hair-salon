@@ -35,8 +35,9 @@
     });
 
     $app->get("/stylists/{id}", function ($id) use ($app)
-    {
-        Stylist::find($id);
+    {   echo $id;
+        $stylist = Stylist::find($id);
+        return $app['twig']->render('stylists.html.twig', array('stylist'=> $stylist));
     });
 
     return $app;
