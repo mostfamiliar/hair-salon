@@ -12,12 +12,11 @@
         <div class="container">
         <h1><i><a href="/">HANDSOME DEVIL</a></i></h1>
             <div class="row">
-                {}
                 <h4>Add new client for {{ stylist.getName}}:</h4>
-                <form action='/clients' method='post'>
-                    <input id="stylist_id" name="stylist_id" type="hidden" value="{{ stylist.getId }}">
+                <form action='/clients' method='post' class="col s6">
+                    <input id="stylist_id" name="stylist_id" type="hidden" value="{{ stylist.getId }}" required>
                     <label for='client_name'>Client Name</label>
-                    <input id='client_name' name='client_name' type='text'>
+                    <input id='client_name' name='client_name' type='text' required>
                 <div class="input-field col s12">
                   <button type="submit" class="waves-effect waves-light btn indigo"> <i>SUBMIT<i></button>
                  </div>
@@ -26,10 +25,11 @@
 
         <div class="row">
         <h3>{{stylist.getName}}'s clients:</h3>
-            <ul>
+            {% if clients is not empty %}
                 {% for client in clients %}
-                <div class="col s12 m3">
-                  <div class="card indigo lighten-5">
+
+                    <div class="col s12 m3">
+                    <div class="card indigo lighten-5">
                     <div class="card-content black-text">
                         <span class="card-title">{{ client.getName }}</span>
                         <div class="card-action">
@@ -38,7 +38,9 @@
                     </div>
                   </div>
               </div>
+        
                 {% endfor %}
+            {% endif %}
 
         </div>
         <form action="/delete_all_clients" method="post" class="col s12">
