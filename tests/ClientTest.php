@@ -157,7 +157,7 @@ class  ClientTest  extends PHPUnit_Framework_TestCase{
 
 
             //Act
-            $new_Client->deleteClient();
+            $new_Client->delete();
 
             //Assert
             $this->assertEquals([$new_Client2], Client::getAll());

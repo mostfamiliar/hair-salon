@@ -158,7 +158,7 @@ class  StylistTest  extends PHPUnit_Framework_TestCase{
 
 
             //Act
-            $new_stylist->deleteStylist();
+            $new_stylist->delete();
 
             //Assert
             $this->assertEquals([$new_stylist2], Stylist::getAll());
